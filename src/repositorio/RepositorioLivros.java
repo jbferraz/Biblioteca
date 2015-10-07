@@ -10,11 +10,14 @@ import model.Livro;
 
 /**
  *
- * @author 771400163
+ * @author Jair Ferraz
  */
 public class RepositorioLivros {
     private ArrayList<Livro> listaLivros;
     
+    /**
+     *
+     */
     public RepositorioLivros(){
         listaLivros= new ArrayList<Livro>();        
     }
@@ -41,7 +44,7 @@ public class RepositorioLivros {
         else
             return false;
     }
-    public Livro buscarClientePorNomeCliente(String NomeLivro)
+    public Livro buscarLivroPorNomeLivro(String NomeLivro)
     {
         for(Livro l: listaLivros)
         {

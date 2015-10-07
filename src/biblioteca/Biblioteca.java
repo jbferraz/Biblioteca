@@ -10,6 +10,7 @@ import repositorio.RepositorioClientes;
 import repositorio.RepositorioLivros;
 import util.Console;
 import model.Livro;
+import repositorio.RepositorioRetiraLivro;
 
 /**
  *
@@ -19,6 +20,8 @@ public class Biblioteca {
 
     static RepositorioLivros repositorioLivros = new RepositorioLivros();
     static RepositorioClientes repositorioClientes = new RepositorioClientes();
+    static RepositorioRetiraLivro repositorioRetiraLivro = new RepositorioRetiraLivro();
+    
 
     public static void menuP() {
         int op = 0;
@@ -140,7 +143,7 @@ public class Biblioteca {
 
     public static void main(String[] args) {
         // TODO code application logic here
-        menuP();
+       menuP();
     }
 
 }
