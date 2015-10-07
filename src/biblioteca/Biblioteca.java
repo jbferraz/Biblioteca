@@ -31,6 +31,7 @@ public class Biblioteca {
             System.out.println(".: Biblioteca - Menu :.");
             System.out.println("1 - Cadastro de Livros");
             System.out.println("2 - Cadastro de Clientes");
+            System.out.println("3 - Cadastro de Retirada de Livro");
             System.out.println("6 - Sair");
 
             op = Console.scanInt("Escolha uma opção: ");
@@ -40,6 +41,9 @@ public class Biblioteca {
                     break;
                 case 2:
                     menuC();
+                    break;
+                case 3:
+                    menuRL();
                     break;
                 default:
                     throw new AssertionError();
@@ -51,7 +55,7 @@ public class Biblioteca {
         int op = 0;
         
         while (op != 3) {
-            
+            System.out.println(".: Menu - Cadastro de Livro:.");
             System.out.println("1 - Adicionar Livro");
             System.out.println("2 - Visualizar todos Livros");
             System.out.println("3 - Voltar");
@@ -101,7 +105,7 @@ public class Biblioteca {
         int op = 0;
         
         while (op != 3) {
-            
+            System.out.println(".: Menu - Cadastro Cliente:.");
             System.out.println("1 - Adicionar Cliente");
             System.out.println("2 - Visualizar todos Clientes");
             System.out.println("3 - Voltar");
@@ -139,6 +143,36 @@ public class Biblioteca {
             }
         }
 
+    }
+    
+    public static void menuRL(){
+        int op = 0;
+
+        while (op != 3) {
+
+            System.out.println(".: Menu - Retirada de Livro:.");
+            System.out.println("1 - Adicionar Retirada de Livro");
+            System.out.println("2 - Visualizar todas Retiradas de Livros");
+            System.out.println("3 - Voltar");
+
+            op = Console.scanInt("Escolha uma opção: ");
+            switch (op) {
+                case 1:
+                    System.out.println("Escolher Cliente:");
+                    repositorioClientes.getListaClientes();
+                    System.out.println("----------------");
+                    
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    menuP();
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
     }
 
     public static void main(String[] args) {
