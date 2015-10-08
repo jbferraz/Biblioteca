@@ -21,7 +21,6 @@ public class Biblioteca {
     static RepositorioLivros repositorioLivros = new RepositorioLivros();
     static RepositorioClientes repositorioClientes = new RepositorioClientes();
     static RepositorioRetiraLivro repositorioRetiraLivro = new RepositorioRetiraLivro();
-    
 
     public static void menuP() {
         int op = 0;
@@ -46,21 +45,21 @@ public class Biblioteca {
                     menuRL();
                     break;
                 default:
-                    throw new AssertionError();
+                    //throw new AssertionError();
             }
         }
     }
 
     public static void menuL() {
         int op = 0;
-        
+
         while (op != 3) {
             System.out.println(".: Menu - Cadastro de Livro:.");
             System.out.println("1 - Adicionar Livro");
             System.out.println("2 - Visualizar todos Livros");
             System.out.println("3 - Voltar");
             op = Console.scanInt("Escolha uma opção: ");
-            
+
             switch (op) {
                 case 1:
                     String ISBN = Console.scanString("ISBN: ");
@@ -73,11 +72,10 @@ public class Biblioteca {
                     repositorioLivros.adicionar(livros);
                     break;
                 case 2:
-                    System.out.println("\nLista de pacientes");
+                    System.out.println("\nLista de Livros");
                     if (!repositorioLivros.temLivros()) {
                         System.out.println("Nenhum livro foi cadastrado!");
-                    }
-                    else {
+                    } else {
                         System.out.print(String.format("%-10s", "ISBN"));
                         System.out.print(String.format("%-10s", "Nome"));
                         System.out.print(String.format("%-20s", "Autores"));
@@ -95,7 +93,7 @@ public class Biblioteca {
                 case 3:
                     menuP();
                 default:
-                    throw new AssertionError();
+                    //throw new AssertionError();
             }
         }
 
@@ -103,14 +101,14 @@ public class Biblioteca {
 
     public static void menuC() {
         int op = 0;
-        
+
         while (op != 3) {
             System.out.println(".: Menu - Cadastro Cliente:.");
             System.out.println("1 - Adicionar Cliente");
             System.out.println("2 - Visualizar todos Clientes");
             System.out.println("3 - Voltar");
             op = Console.scanInt("Escolha uma opção: ");
-            
+
             switch (op) {
                 case 1:
                     int matricula = Console.scanInt("Matricula: ");
@@ -122,10 +120,9 @@ public class Biblioteca {
                     break;
                 case 2:
                     System.out.println("\nLista de clientes");
-                    if (!repositorioLivros.temLivros()) {
+                    if (!repositorioClientes.temClientes()) {
                         System.out.println("Nenhum cliente foi cadastrado!");
-                    }
-                    else {
+                    } else {
                         System.out.print(String.format("%-10s", "Matricula"));
                         System.out.print(String.format("%-10s", "Nome"));
                         System.out.println(String.format("%-5s", "Telefone"));
@@ -139,13 +136,13 @@ public class Biblioteca {
                 case 3:
                     menuP();
                 default:
-                    throw new AssertionError();
+                    //throw new AssertionError();
             }
         }
 
     }
-    
-    public static void menuRL(){
+
+    public static void menuRL() {
         int op = 0;
 
         while (op != 3) {
@@ -159,25 +156,61 @@ public class Biblioteca {
             switch (op) {
                 case 1:
                     System.out.println("Escolher Cliente:");
-                    repositorioClientes.getListaClientes();
-                    System.out.println("----------------");
+                    if (!repositorioClientes.temClientes()) {
+                        System.out.println("Nenhum cliente foi cadastrado!");
+                    } else {
+                        System.out.print(String.format("%-10s", "Matricula"));
+                        System.out.print(String.format("%-10s", "Nome"));
+                        System.out.println(String.format("%-5s", "Telefone"));
+                        for (Cliente c : repositorioClientes.getListaClientes()) {
+                            System.out.print(String.format("%-10s", c.getMatricula()));
+                            System.out.print(String.format("%-10s", c.getNome()));
+                            System.out.println(String.format("%-5s", c.getTelefone()));
+                        }
+                        System.out.println("------------");
+                    }
+                    int matricula=Console.scanInt("Informa a matricula: ");
                     
+                    System.out.println("Escolher Livros:");
+                    if (!repositorioLivros.temLivros()) {
+                        System.out.println("Nenhum livro foi cadastrado!");
+                    } else {
+                        System.out.print(String.format("%-10s", "ISBN"));
+                        System.out.print(String.format("%-10s", "Nome"));
+                        System.out.print(String.format("%-20s", "Autores"));
+                        System.out.print(String.format("%-20s", "Editoras"));
+                        System.out.println(String.format("%-5s", "Ano"));
+                        for (Livro l : repositorioLivros.getListaLivros()) {
+                            System.out.print(String.format("%-10s", l.getISBN()));
+                            System.out.print(String.format("%-10s", l.getNome()));
+                            System.out.print(String.format("%-20s", l.getAutores()));
+                            System.out.print(String.format("%-20s", l.getEditora()));
+                            System.out.println(String.format("%-5s", l.getAno()));
+                        }
+                    }
+                    int quant=Console.scanInt("Informe quantos livros vai retirar: ");
+                    
+                    for (int i = 0; i < quant+1; i++) {
+                        System.out.println("Informe o ISBN do Livro nº "+i);
+                        
+                    }
+
                     break;
                 case 2:
-                    
+
                     break;
                 case 3:
                     menuP();
                     break;
                 default:
-                    throw new AssertionError();
+                    //throw new AssertionError();
             }
         }
     }
 
     public static void main(String[] args) {
         // TODO code application logic here
-       menuP();
+        menuP();
     }
 
 }

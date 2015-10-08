@@ -8,7 +8,7 @@ import model.Cliente;
  * @author Jair Ferraz
  */
 public class RepositorioClientes {
-    private ArrayList<Cliente> listaClientes;
+    private final ArrayList<Cliente> listaClientes;
     
     public RepositorioClientes(){
         listaClientes= new ArrayList<Cliente>();        
@@ -31,10 +31,7 @@ public class RepositorioClientes {
         return(null);
     }
     public boolean existeCliente(int matricula){
-        if(this.buscarClientePorMatricula(matricula)!=null)
-            return true;
-        else
-            return false;    
+        return this.buscarClientePorMatricula(matricula)!=null;    
     }
     public Cliente buscarClientePorNomeCliente(String NomeCliente)
     {
@@ -47,7 +44,7 @@ public class RepositorioClientes {
         }
         return(null);
     }
-    public boolean temMedicamentos(){
+    public boolean temClientes(){
         return !listaClientes.isEmpty();
     }
 }
