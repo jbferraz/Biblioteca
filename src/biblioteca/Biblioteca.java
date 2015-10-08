@@ -5,12 +5,19 @@
  */
 package biblioteca;
 
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Cliente;
 import repositorio.RepositorioClientes;
 import repositorio.RepositorioLivros;
 import util.Console;
 import model.Livro;
+import model.RetiraLivro;
 import repositorio.RepositorioRetiraLivro;
+import util.DateUtil;
 
 /**
  *
@@ -189,14 +196,41 @@ public class Biblioteca {
                         }
                     }
                     int quant=Console.scanInt("Informe quantos livros vai retirar: ");
-                    
-                    for (int i = 0; i < quant+1; i++) {
-                        System.out.println("Informe o ISBN do Livro nº "+i);
-                        
+                    ArrayList<Livro> listaLivros = null;
+                    for (int i = 0; i < quant; i++) {
+                        System.out.println("Informe o ISBN do Livro nº " + i+1);
+                        listaLivros.add(repositorioLivros.buscarLivroPorISBN(Console.scanString("Digite: ")));
+                    }
+                    String dtRet = Console.scanString("Data Retirada (dd/mm/aaaa): ");
+                    try {
+                        Date dtRetirada;
+                        dtRetirada = DateUtil.stringToDate(dtRet);
+                        RetiraLivro retLivro = new RetiraLivro(matricula, listaLivros, dtRetirada, dtRetirada);
+                        repositorioRetiraLivro.adicionar(retLivro);
+                    } catch (ParseException ex) {
+                        Logger.getLogger(Biblioteca.class.getName()).log(Level.SEVERE, null, ex);
                     }
 
                     break;
                 case 2:
+                    System.out.println("\nLista de clientes");
+                    if (!repositorioRetiraLivro.temRetiraLivro()) {
+                        System.out.println("Nenhum retirada foi encontrada!");
+                    } else {
+                        System.out.print(String.format("%-10s", "Matricula"));
+                        System.out.print(String.format("%-10s", "Livro"));
+                        System.out.print(String.format("%-5s", "Data Retirada"));
+                        System.out.println(String.format("%-5s", "Data à Devolver"));
+                        for (RetiraLivro rt : repositorioRetiraLivro.getListaRetiraLivro()) {
+                            System.out.print(String.format("%-10s", rt.getMatricula()));
+                            /*
+                            for (Livro ll : rt.getListaLivros()) {
+                                System.out.print(String.format("%-10s", ll.getListaLivros());
+                            }*/
+                            System.out.print(String.format("%-5s", rt.getDataRetirada()));
+                            System.out.println(String.format("%-5s", rt.getDataDevolucao()));
+                        }
+                    }
 
                     break;
                 case 3:

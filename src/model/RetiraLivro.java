@@ -14,10 +14,10 @@ import java.util.Date;
  */
 public class RetiraLivro {
 
-    private int matricula;
-    private ArrayList<Livro> listaLivros; 
-    private Date dataRetirada;
-    private Date dataDevolucao;
+    private  int matricula;
+    private  ArrayList<Livro> listaLivros; 
+    private  Date dataRetirada;
+    private  Date dataDevolucao;
 
     public RetiraLivro(int matricula, ArrayList<Livro> listaLivros, Date dataRetirada, Date dataDevolucao) {
         this.matricula = matricula;
