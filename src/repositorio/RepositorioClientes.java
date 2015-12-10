@@ -16,6 +16,9 @@ public class RepositorioClientes {
     public void adicionar(Cliente cliente){
         listaClientes.add(cliente);
     }
+    public void excluir(Cliente cliente){
+        listaClientes.remove(cliente);
+    }
     public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }

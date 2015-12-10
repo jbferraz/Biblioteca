@@ -14,20 +14,20 @@ import java.util.Date;
  */
 public class RetiraLivro {
 
-    private  int matricula;
+    private Cliente cliente;
     private  ArrayList<Livro> listaLivros; 
     private  Date dataRetirada;
     private  Date dataDevolucao;
 
-    public RetiraLivro(int matricula, ArrayList<Livro> listaLivros, Date dataRetirada, Date dataDevolucao) {
-        this.matricula = matricula;
+    public RetiraLivro(Cliente cliente, ArrayList<Livro> listaLivros, Date dataRetirada, Date dataDevolucao) {
+        this.cliente = cliente;
         this.listaLivros = listaLivros;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
     }
 
-    public int getMatricula() {
-        return matricula;
+    public Cliente getCliente() {
+        return cliente;
     }
 
     public ArrayList<Livro> getListaLivros() {

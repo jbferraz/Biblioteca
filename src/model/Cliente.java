@@ -72,6 +72,11 @@ public class Cliente {
     public String getTelefone() {
         return telefone;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "\nmatricula=" + matricula + ", \nnome=" + nome + ", \ntelefone=" + telefone + '}';
+    }
     
     
 }

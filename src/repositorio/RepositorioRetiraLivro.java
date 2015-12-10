@@ -10,9 +10,6 @@ import model.RetiraLivro;
 public class RepositorioRetiraLivro{
     private ArrayList<RetiraLivro> listaRetiraLivros;
     
-    /**
-     *
-     */
     public RepositorioRetiraLivro(){
         listaRetiraLivros=new ArrayList<RetiraLivro>();
     }
@@ -25,7 +22,7 @@ public class RepositorioRetiraLivro{
     public RetiraLivro buscaRetiraLivroPorMatricula(int matricula){
         for(RetiraLivro r: listaRetiraLivros)
         {
-            if(r.getMatricula()==matricula)
+            if(r.getCliente().getMatricula()==matricula)
             {
                 return(r);
             }

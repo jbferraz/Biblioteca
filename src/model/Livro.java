@@ -114,4 +114,9 @@ public class Livro {
         return ano;
     }
 
+    @Override
+    public String toString() {
+        return "Livro{" + "\nISBN=" + ISBN + ", \nnome=" + nome + ", \nautores=" + autores + ", \neditora=" + editora + ", \nano=" + ano + '}';
+    }
+
 }
